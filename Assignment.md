@@ -1,0 +1,15 @@
+# C1_PROJECT
+## Capstone 1
+
+Your first capstone project comes before you have learned anything about machine learning. Many students wonder why we choose to have a capstone at this time, but it turns out that demonstrating mastery of the technological and statistical foundations of the field are very powerful examples of your ability to quickly integrate onto DS teams. As a reminder, your capstone projects should serve as demonstrations of a large and general skill set.
+### Skills to Feature
+##### Web Scraping
+Being able to create your own dataset is a powerful skill set, and it's unlikely you've mastered this skill on the one day of class that it was covered. This is a great opportunity for you to work with `BeautifulSoup`, `Selenium`, and `Scrapy` in order for you to create wholly novel datasets. Take careful note of all of the complications in acquiring data that you encounter in this process. As you move to your later projects, your desire for larger datasets will only expand, and being able to satisfy this desire will require planning and effort.
+**BONUS** - Often the most interesting studies come from combining multiple sources of information. If you can scrape multiple websites, your datasets will be even more impressive to hiring managers.
+##### Data Pipelines
+Information is not data. Data is well formatted, regular, and able to be leveraged by statistical models. As such, building a pipeline that will clean and transform the data into well formatted files is very important. If you had done web scraping into mongo, consider a pipeline that will read in json from mongo and write tabular data to PostGres. As none of us are aspiring to be amateur data scientists, we should be writing professional quality code. This means well documented python functions with descriptive names. Feel free to have notebooks demonstrating how code should be run, but ultimately, you want functioning python scripts that can be run as background processes.
+##### Data Visualization
+A good portion of this project should be devoted to data explorations and plotting. Make sure to follow best practices (all axis need labels!!). While it's great to have these embedded in notebooks, saving them to files and having them in your markdown will make it all the more accessible.
+##### Hypothesis Testing
+This capstone is an excellent time to both deepen your understanding of, and demonstrate your ability to conduct a statistical study. Remember, that many of the calculations surrounding test power and the number of statistics ought to be conducted before a single byte of data is ever collected. Once your web scrapers are running you should spend time documenting the thought process of what you are hoping to study, and why you made the design choices you chose to make.
+**Note** - many students feel that if they fail to reject their null hypothesis, their capstone is a failure. As scientists, we should be dispassionate about the outcomes of our studies. This means that if we only have results where we fail to reject $H_0$, we're either being unscrupulous or unambitious.
