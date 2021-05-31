@@ -6,7 +6,7 @@ The algorithm is as follows:
 2) Check if reviewer is located in US (plus)
 3) Check if reviewer has tag "Verified Purchase" (plus), discard otherwise
 4) Check if reviewer has photos (plus)
-5) **Optional** Check if photos are not available at [google images](https://images.google.com) (stock photos), if yes, discard review
+5) __**Optional**__ Check if photos are not available at [google images](https://images.google.com) (stock photos), if yes, discard review
 6) Check if reviewer has more than one review (plus)
 7) Count non-discarded reviews
 8) Output results 8.1) Percentage of fake/paid? reviews, Level of trustworthiness of the rest (% of "pluses" ?)
@@ -26,3 +26,11 @@ The algorithm is as follows:
 
   ## Hypothesis Testing
   "50% of reviews are fake"? "Based on statistical analysis of reviews, you may want to reconsider this purchase"? "The reviews seem legit. Never mind angry reviewers - maybe competitors"?
+
+# Proposal 2: Data.gov - 291,326 data sets; https://resources.data.gov
+The home of the U.S. Government’s open data
+Here you will find data, tools, and resources to conduct research, develop web and mobile applications, design data visualizations, and more.
+For information regarding the Coronavirus/COVID-19, please visit Coronavirus.gov.
+[Memo for HR - Data Scientist](https://www.chcoc.gov/content/data-scientist-titling-guidance)
+
+# Proposal 3: mmm, well ... 🤷🏻‍♂️
