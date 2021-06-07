@@ -1,36 +1,40 @@
-# Proposal 1: Amazon reviews tester
-The idea of the project is a service delivered via a webpage (Docker?), that accepts a single URL with amazon merchandise reviews, and replies with an estimate of trustworthiness of subject reviews.
-The null hypothesis $H_0$ is as follows "All(50%?) reviews are fake, and planted/paid for by merchants". Alternative hypothesis is $H_a$ "N reviews are real, and can be counted". Output is N reviews are real with average rating of X stars.
-The algorithm is as follows:
-1) Choose a reviewer and start rating
-2) Check if reviewer is located in US (plus)
-3) Check if reviewer has tag "Verified Purchase" (plus), discard otherwise
-4) Check if reviewer has photos (plus)
-5) __**Optional**__ Check if photos are not available at [google images](https://images.google.com) (stock photos), if yes, discard review
-6) Check if reviewer has more than one review (plus)
-7) Count non-discarded reviews
-8) Output results 8.1) Percentage of fake/paid? reviews, Level of trustworthiness of the rest (% of "pluses" ?)
-9) **Optional** If possible recommend alternatives
-10) **Optional** If possible recommend identical merchandise at lower price. Assumption all local retailers buy from the same supplier with different mark up. There is no reason to pay extra for the same product.
+# WDFW-Coded Wire Tag Fish Recoveries
+
+[data: 3.25M rows, 43 columns](https://data.wa.gov/Natural-Resources-Environment/WDFW-Coded-Wire-Tag-Fish-Recoveries/auvb-4rvk/data)
+
+# Table of contents
+
+# Daily to Do
+* Table of contents
+* Structure README with sections
+* Start Python script to process data and start visualizations
+* [Access this Dataset via SODA API
+](https://data.wa.gov/Natural-Resources-Environment/WDFW-Coded-Wire-Tag-Fish-Recoveries/auvb-4rvk)
+* daily 
 
 
-* Skills to feature:
-  ## Web Scraping:
-  Use `BeautifulSoup` to process amazon pages for analysis of the reviews
+# Communications
+```
+June 7, 2021 11:30AM
+https://data.wa.gov/Natural-Resources-Environment/WDFW-Coded-Wire-Tag-Fish-Recoveries/auvb-4rvk
 
-  ## Data Pipelines
-  Process data procured by `BeautifulSoup` to search for applicable tags, images, and accumulate results using python, numpy, pandas, scipy libraries. PostgreSQL could be utilized for data storage, since non-SQL databases like Mongo would unlikely be required. All python routines should have a docstring preferably with OOP format
+Send a Message to the Owner of this Dataset
 
-  ## Data Visualization
-  Animated Bayesian curves as data is being processed is one optional feature. Supposedly one of the early developers once said that program that does not output anything in 10 seconds is no good? COnstant feedback to the user (preferably not in the form of rotating clock)
+Subject: Dataset use suggestions (WDFW Coded Wire tag fish recoveries)
 
-  ## Hypothesis Testing
-  "50% of reviews are fake"? "Based on statistical analysis of reviews, you may want to reconsider this purchase"? "The reviews seem legit. Never mind angry reviewers - maybe competitors"?
+Dear WDFW,
+I would like to use your dataset of WDFW Coded Wire tag fish recoveries for my student project as a data scientist.
+The idea is to show ability to clean data, test statistical hypothesis, and present results at the school.
+I am planning to explore data set to see if correlation with a few factors could be demonstrated, like orcas recovery, recreational fishing (licenses sold, catch records, boats sold, fishing tours operators activity), funds spent on recovery effort, Native Americans catch records, river dams profitability?
+Your insights and recommendations would be greatly appreciated.
 
-# Proposal 2: Data.gov - 291,326 data sets; https://resources.data.gov
-The home of the U.S. Government’s open data
-Here you will find data, tools, and resources to conduct research, develop web and mobile applications, design data visualizations, and more.
-For information regarding the Coronavirus/COVID-19, please visit Coronavirus.gov.
-[Memo for HR - Data Scientist](https://www.chcoc.gov/content/data-scientist-titling-guidance)
+Thank you
 
-# Proposal 3: mmm, well ... 🤷🏻‍♂️
+Best regards,
+Alexey Smirnov
+student of Galvanize DSI Immersive
+Bothell WA
+
+ans12256@hotmail.com
+
+```
