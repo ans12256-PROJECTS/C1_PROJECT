@@ -10,8 +10,10 @@
 * Start Python script to process data and start visualizations
 * [Access this Dataset via SODA API
 ](https://data.wa.gov/Natural-Resources-Environment/WDFW-Coded-Wire-Tag-Fish-Recoveries/auvb-4rvk)
-* daily 
+* daily
 
+# Wow! That's what I call Data Science!
+![1st Success `:o(`](img/Informative_Data.png)
 
 # Communications
 ```
