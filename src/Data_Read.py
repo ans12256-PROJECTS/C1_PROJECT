@@ -2,7 +2,7 @@ def Read_n_Clean_csv_NaN_columns(URL_file: str, empty_DataFrame):
     '''
     To use:
     import Data_Read
-    Data_Read.Read_n_Clean_NaN_columns(URL_file) # URL_file -> string
+    Read_n_Clean_csv_NaN_columns(URL_file: str, empty_DataFrame)
 
     imports URL_file, and drops in-place empty (NaN) columns
     '''
@@ -10,6 +10,7 @@ def Read_n_Clean_csv_NaN_columns(URL_file: str, empty_DataFrame):
     import pandas as pd
 
     data_df_pd = pd.read_csv(URL_file)
+    # dtype = {'speed': int, 'period': str, 'warning': str, 'pair': int}
     # to clean at read time:
     # usecols: int | str | Sequence | None = ...,
     # df.to_csv('my_pandas_dataframe.csv', index=False)
@@ -68,3 +69,15 @@ def Read_n_Clean_csv_NaN_columns(URL_file: str, empty_DataFrame):
     # data_df_pd.info() # displays non-null counts
 
     return data_df_pd  # empty DataFrame is passed in to enable return of the resulting DF
+
+
+def Clean_2col_df_NaN_rows(two_column_DataFrame):
+    '''
+    Receive two columns data frame, remove rows with
+    NaNs in ether column
+    '''
+    # Ref: https://datatofish.com/rows-with-nan-pandas-dataframe/
+    # Ref: https://datatofish.com/dropna/
+    df_no_Nans = two_column_DataFrame.dropna()
+
+    return df_no_Nans  # empty DataFrame is passed in to enable return of the resulting DF
