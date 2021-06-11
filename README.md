@@ -2,22 +2,6 @@
 
 [data: 3.25M rows, 43 columns](https://data.wa.gov/Natural-Resources-Environment/WDFW-Coded-Wire-Tag-Fish-Recoveries/auvb-4rvk/data)
 
-# Table of contents
-`Markdown All in One, Command+Shift+P, Create table of contents`
-- [WDFW-Coded Wire Tag Fish Recoveries](#wdfw-coded-wire-tag-fish-recoveries)
-- [Table of contents](#table-of-contents)
-- [Daily to Do](#daily-to-do)
-- [Wow! That's what I call Data Science!](#wow-thats-what-i-call-data-science)
-- [Links, References](#links-references)
-- [Communications](#communications)
-# Daily to Do
-* Table of contents
-* Structure README with sections
-* Start Python script to process data and start visualizations
-* [Access this Dataset via SODA API
-](https://data.wa.gov/Natural-Resources-Environment/WDFW-Coded-Wire-Tag-Fish-Recoveries/auvb-4rvk)
-* daily
-
 # Data correlation Pacific temperature vs Fish numbers
 ![Data Correlation](img/Salmon_Returns_n_El_Ninos.png)
 
@@ -28,6 +12,7 @@ Ho = Warm years (delta T > threshould) do not affect fish returns
 
 # Code Structure (Python)
 ## Reading subroutine
+[Data_Read.py](src/Data_Read.py)
 
 ## Data Cleaning Subroutines
 
