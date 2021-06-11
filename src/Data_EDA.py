@@ -1,3 +1,4 @@
+# Data_EDA.py:
 def read_data(DataFrame=''):
     # Separate into a subroutine to pass df already in memory to avoid
     # re-read
@@ -5,47 +6,18 @@ def read_data(DataFrame=''):
     #  call data import script
     # Data_Read.py stored in the same dir 'scr'; Imports and cleans empty columns
 
-    from datetime import datetime
-    # Alexey's routine to plot scatter plot of Series(counts) vs index (years)
-    import df_2_plot
-    import logging          # to dump diagnostics in src/output.txt
-    import Data_Read        # Alexey's routine to read data, clean empty columns
-    import pandas as pd
-    import matplotlib.pyplot as plt
-    import numpy as np
+    #     from datetime import datetime
+    #     import df_2_plot        # Alexey's routine to plot scatter plot of Series(counts) vs index (years)
+    #     import logging          # to dump diagnostics in src/output.txt
+    #     import Data_Read        # Alexey's routine to read data, clean empty columns
+    #     import pandas as pd
+    #     import matplotlib.pyplot as plt
+    #     import numpy as np
 
     # URL_file = 'https://data.wa.gov/resource/auvb-4rvk.csv'
     # 'https: // data.wa.gov/api/views/auvb-4rvk/rows.csv?accessType = DOWNLOAD'
     URL_file = '../data/WDFW-Coded_Wire_Tag_Fish_Recoveries.csv'
 
-    # d_types = ['Number', 'Date & Time', 'Plain Text', 'Plain Text', 'Plain Text',
-    #            'Plain Text', 'Plain Text', 'Plain Text', 'Plain Text', 'Plain Text',
-    #            'Plain Text', 'Number', 'Date & Time', 'Plain Text', 'Plain Text',
-    #            'Plain Text', 'Number', 'Plain Text', 'Plain Text', 'Plain Text',
-    #            'Plain Text', 'Plain Text', 'Plain Text', 'Plain Text', 'Plain Text',
-    #            'Plain Text', 'Plain Text', 'Number', 'Date & Time', 'Date & Time',
-    #            'Plain Text', 'Plain Text', 'Plain Text', 'Plain Text', 'Plain Text',
-    #            'Plain Text', 'Plain Text', 'Plain Text', 'Number', 'Number', 'Number',
-    #            'Number']
-    # d_cols = ['Return Year', 'Verified Date', 'Species', 'Run', 'Location Name',
-    #           'PSC Code', 'Location Code', 'Process Project', 'Recovery Gear Type',
-    #           'PSNET Recovery Gear Type', 'Bag Label', 'Head Number', 'Recovery Date',
-    #           'Sample Type', 'Tag Result', 'Tag Code', 'Fork Length (cm)', 'Sex',
-    #           'Fisher Type', 'Maturity', 'Mark', 'Project Fish Number',
-    #           'Sample Card Number', 'Sample Card Record Number', 'Scale Card Number',
-    #           'Scale Card Line Number', 'Otolith Number', 'Brood Year',
-    #           'First Release Date', 'Last Release Date', 'Release Site',
-    #           'Rearing Hatchery', 'Stock Name', 'Release Run', 'Release Agency',
-    #           'Bag Label Comments', 'Fish Comments', 'Release Comments',
-    #           'Released Tag Adclip Count', 'Released Tag No Adclip Count',
-    #           'Released Untag Adclip Count', 'Released Untag No Adclip Count',
-    #           'InternalId']
-    # # All date fiels are mm/dd/yyyy format of NaN
-    # Date_cols = ['Verified Date', 'Recovery Date',
-    #              'First Release Date', 'Last Release Date']
-
-    # To save time on re-runs, read only if df is not in memory
-    # Ref: https://stackoverflow.com/questions/39337115/testing-if-a-pandas-dataframe-exists
     try:
         df.head
         # print('df pandas DataFrame DOES exist, skipping reading again.')
@@ -54,16 +26,20 @@ def read_data(DataFrame=''):
     except AttributeError:   # Neah unlikely to happen
         print('df pandas DataFrame DOES exists, but is None.')
     # catch when it hasn't even been defined
+    except UnboundLocalError: # local variable 'df' referenced before assignment
+        print('NO df pandas DataFrame exists, reading data branch')
+        # Empty DataFrame is passed as a parameter to get back one with data
+        # df = Data_Read.Read_n_Clean_csv_NaN_columns(URL_file, pd.DataFrame())
+        df = Read_n_Clean_csv_NaN_columns(URL_file, pd.DataFrame())
     except NameError:  # df does not exist => first run proceed to read data
         print('NO df pandas DataFrame exists, reading data branch')
         # Empty DataFrame is passed as a parameter to get back one with data
-        df = Data_Read.Read_n_Clean_csv_NaN_columns(URL_file, pd.DataFrame())
+        # df = Data_Read.Read_n_Clean_csv_NaN_columns(URL_file, pd.DataFrame())
+        df = Read_n_Clean_csv_NaN_columns(URL_file, pd.DataFrame())
 
-    # df2.loc[: , "2005"] extract a column
-    #  time series by 'returnyear'
-    # EDA plot a few graphs against returnyear, maybe another subroutine
 
-    import matplotlib.pyplot as plt
+
+    #     import matplotlib.pyplot as plt
 
     # x = df['returnyear']
     # y = df['species']
@@ -193,8 +169,10 @@ def read_data(DataFrame=''):
     # logging.warning('exit')
 
     #  Clean rows where either of two (2) columns has a NaN to prepare for plot
-    plt_2_cols_cleaned = Data_Read.Clean_2col_df_NaN_rows(
-        df[['Return Year', 'Species']])
+    #  plt_2_cols_cleaned = Data_Read.Clean_2col_df_NaN_rows(df[['Return Year', 'Species']])
+    plt_2_cols_cleaned = Clean_2col_df_NaN_rows(df[['Return Year', 'Species']])
+
+
 
     # import df_2_plot
     # df_2_plot.plot_two_cols(plt_2_cols_cleaned, params=0)
@@ -206,6 +184,7 @@ def read_data(DataFrame=''):
     # DataFrame
     # df_tmp = pd.DataFrame({'count': plt_2_cols_cleaned.groupby(
     #         ['Return Year', 'Species']).size()})
+
 
     #  In[22]: df_tmp.head
     # Out[22]:
@@ -243,6 +222,7 @@ def read_data(DataFrame=''):
 
     #  Data extraction
     df_tmp = df2c.reset_index()  # each species gets individual year
+    df_tmp.rename(columns = {0:'Total Count'}, inplace = True) # summary column had name 0
     # df_tmp[df_tmp['Species'] == 'Coho'] # Year, Coho, count
     # df_2_plot = df_tmp[df_tmp['Species'] == 'Coho']
     # df_2_plot.head()
@@ -254,11 +234,23 @@ def read_data(DataFrame=''):
     # initialize figure
     fig, axs = plt.subplots(figsize=(15, 10))
 
-    df_2_plot.plot_two_cols(
+    #     df_2_plot.plot_two_cols(
+    #         df_tmp[df_tmp['Species'] == 'Coho'],
+    plot_two_cols(
         df_tmp[df_tmp['Species'] == 'Coho'],
-        y_lbl_in='Fish count', col_in='red', fig_in=fig, axs_in=axs)
-    df_2_plot.plot_two_cols(
+        y_lbl_in='Fish count', col_in='red', fig_in = fig,
+        axs_in = axs, label_in = 'Coho', plt_type='s')
+
+    #     df_2_plot.plot_two_cols(
+    #         df_tmp[df_tmp['Species'] == 'Chinook'],
+    plot_two_cols(
         df_tmp[df_tmp['Species'] == 'Chinook'],
-        y_lbl_in='Fish count', col_in='blue', fig_in=fig, axs_in=axs)
+        y_lbl_in='Fish count', col_in='blue', fig_in=fig,
+        axs_in=axs, label_in = 'Chinook', plt_type='s')
+
+    axs.legend(loc='upper right')  # [] required, otherwise single character as string is iterable
+    axs.grid()
+
 
     plt.show()
+    return df; # to make df available for main memory
